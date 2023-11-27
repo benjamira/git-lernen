@@ -1,0 +1,61 @@
+Termin 2:
+	1) Account auf github.com einrichten
+	2) SSH-Key für github installieren
+		a. kali$ ssh-keygen
+		b. Name: github
+		c. kali$ ssh-add ~/.ssh/github
+		d. kali$ git config --global user.name "Vorname @ Kali"
+		e. kali$ git config --global user.email name@email.de
+		
+	3) VSC installieren:
+		a. kali$ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+		b. Kali$ sudo mv packages.microsoft.gpg /etc/apt/keyrings/
+		c. kali$ sudo apt install apt-transport-https
+		d. kali$ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+		e. kali$ apt update
+		f. kali$ apt-get install code
+	4) GIT-Spielereien
+		a. kali$ mkdir ~/git/git-lernen && cd ~/git/git-lernen
+		b. kali$ git init
+		c. Datei erstellen
+		d. kali$ git status
+		e. kali$ git add: Dateien in "staging area" hinzufügen
+		f. kali$ git status
+		g. kali$ Git commit -m "kommentar": Erstellen eines commits mit den Änderungen aus der "Staging Area"
+		h. Repository in github.com erstellen: benjamira/git-lernen.git, Zugriff = private
+		i. kali$ git remote add origin git@github.com:benjamira/git-lernen.git
+		j. kali$ git push origin master: Commit auf den Server übertragen, um das Remote-Repo zu aktualisieren
+		k. kali$ git pull origin master
+		l. Key des Kollegen im eigenen Repo hinterlegen
+		m. kali$ git clone ssh://git@github.com/…
+		n. kali$ git branch feature1: Branch erstellen
+		o. kali$ git checkout feature1: Wechseln in den Branch
+		p. kali$ git add text2.txt
+		q. kali$ git commit -m "Datei von <name>"
+		r. kali$ git checkout master: text2 ist nicht da!
+		s. kali$ git merge feature1
+		t. kali$ git branch -d feature1
+		u. kali$ git log test.txt
+		v. kali$ git show <hash>
+		w. kali$ git checkout <hash> file1.txt: Alte Version wieder herstellen, die dann noch pushen
+		x. kali$ git commit --ammend: Letzter Commit wird in Staging-Bereich zurückgeholt und neuer Commit durchgeführt (z.B. bei Tippfehler bei Commit-Nachricht)
+		y. kali$ git revert HEAD: Commit rückgängig machen, alle Änderungen eines Commits werden rückgängig gemacht
+		z. Echo "geheimedatei.txt" > .gitignore
+		aa. kali$ git add .gitignore && git commit -m "added gitignore file" && git push origin master
+	5) Repo in VSC öffnen und Dateiänderungen vornehmen
+	6) Juice-Shop installieren:
+		a. Kali$ apt install docker.io docker-compose
+		b. Kali$ vi docker-compose.yml
+			
+	version: '3.1'
+	services:
+	  juice-shop:
+	    image: bkimminich/juice-shop
+	    container_name: juice-shop
+	    ports:
+	      - 3000:3000
+	
+		c. kali$ docker-compose up -d 
+		d. kali$ docker ps
+	
+	7) Mit Juice-shop herumspielen
